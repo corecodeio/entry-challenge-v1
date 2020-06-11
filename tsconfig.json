@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "allowJs": false,
+    "preserveSymlinks": true
+  }
+}
