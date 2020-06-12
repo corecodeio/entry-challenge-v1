@@ -11,6 +11,8 @@
   "author": "netpoe",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "ts-node-dev": "^1.0.0-pre.44"
   },
@@ -19,6 +21,8 @@
     "printWidth": 92
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^14.0.13",
     "typescript": "^3.9.5"
   }
 }
