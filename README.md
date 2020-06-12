@@ -2,7 +2,7 @@
 
 Welcome to Core Code entry challenge.
 
-Please follow the instructions and submit them before 2020/06/30.
+Please follow the instructions and submit them before 2020/06/24.
 
 ## Instructions
 
@@ -64,7 +64,7 @@ Asunto: `emailAddress@claveDeAcceso`
 
 El cuerpo del mensaje debe contener un link al repositorio de Github donde está el código que usaste para resolver el acertijo, es decir, el código que envió el POST y el GET request.
 
-### 5. Espera la invitación de Github a tu correo registrado, (sino la recibes es que no te hemos aceptado)
+### 5. Espera la invitación de Github a tu correo registrado (Si no la recibes, es porque no te hemos aceptado)
 
 Agregaremos tu usuario de Github a la organización de [corecodeio](https://github.com/corecodeio).
 
