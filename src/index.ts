@@ -19,6 +19,10 @@ server.get("/:emailAddress", async (req: Request, res: Response) => {
     const getData = (): Promise<string> =>
       new Promise((resolve, reject) => {
         fs.readFile(`./data/${req.params.emailAddress}.json`, "utf8", (err, data) => {
+          if (Boolean(err)) {
+            reject(new Error("Correo inválido."));
+          }
+
           resolve(data);
         });
       });
@@ -44,7 +48,10 @@ server.get("/:emailAddress", async (req: Request, res: Response) => {
     return res.json(data);
   } catch (error) {
     res.status(400);
-    return res.json({ status: "400", message });
+    return res.json({
+      status: "400",
+      message: Boolean(error.message) ? error.message : message,
+    });
   }
 });
 
