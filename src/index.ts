@@ -4,6 +4,7 @@ import express from "express";
 import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
+import { Request , Response } from 'express';
 import { sendInformation, validateInformation } from './client';
 
 export const router = express.Router({
@@ -34,10 +35,7 @@ server.get("/:emailAddress", async (req: Request, res: Response) => {
 
     if (!isValidPassword) {
       res.status(400);
-      return res.json({
-        status: "400",
-        message,
-      });
+      return res.json();
     }
 
     delete req.body.credentials;
