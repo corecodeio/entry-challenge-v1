@@ -69,4 +69,4 @@ El cuerpo del mensaje debe contener un link al repositorio de Github donde está
 Agregaremos tu usuario de Github a la organización de [corecodeio](https://github.com/corecodeio).
 También te agendaremos una reunión de bienvenida el día 29 de junio. 
 
-# Estás muy cerca de comenzar tu carrera como Ingeniero de Software con Core Code.
+### Estás muy cerca de comenzar tu carrera como Ingeniero de Software con Core Code.
