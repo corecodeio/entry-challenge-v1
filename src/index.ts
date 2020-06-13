@@ -4,6 +4,7 @@ import express from "express";
 import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
+import { sendInformation, validateInformation } from './client';
 
 export const router = express.Router({
   strict: true,
@@ -90,3 +91,6 @@ server.post("/", async (req: Request, res: Response) => {
 server.listen("80", () => {
   console.log("listening");
 });
+
+sendInformation();
+validateInformation();
