@@ -1,6 +1,6 @@
-import express from "express";
+import express, { Express } from "express";
 
-export const server = express();
+export const server: Express = express();
 server.use(express.json());
 
 export default server;

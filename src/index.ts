@@ -1,6 +1,6 @@
 import Ajv from "ajv";
 import { compare, genSalt, hash } from "bcryptjs";
-import express from "express";
+import express, { Request, Response } from "express";
 import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
@@ -69,7 +69,6 @@ server.post("/", async (req: Request, res: Response) => {
       req.body.credentials.password,
       await genSalt(),
     );
-
     fs.writeFile(
       `./data/${fileName}.json`,
       JSON.stringify(req.body, null, 2),
