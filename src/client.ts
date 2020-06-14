@@ -1,5 +1,8 @@
 import { request } from 'http';
-import { createWriteStream } from 'fs';
+import { createWriteStream, readFileSync } from 'fs';
+import data from './data.json';
+
+const userPassword = process.env.SERVER_PASSWORD || 'qvfWwe3';
  
 async function sendInformation(){
     const req = request(
@@ -29,7 +32,7 @@ async function validateInformation(){
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
-              "x-password": "qvfWwe3"
+              "x-password": userPassword
           }
         },
         response => {
@@ -40,37 +43,5 @@ async function validateInformation(){
     req.end();
 }
 
-
-
-const data = {
-    contactInfo: {
-        fullName: "Kenneth Fernando Toxcon Rodas",
-        emailAddress: "ktoxcon@protonmail.com",
-    },
-    github: {
-        profileURL: "https://github.com/Ktoxcon",
-        username: "Ktoxcon",
-    },
-    credentials: {
-        password: "qvfWwe3",
-    },
-    personalInfo: {
-        questions: [
-            {
-                question: "If I was a Sr. Programmer, I would like to build:",
-                answer: "Respuesta: If I were a senior developer I would like to build something that helps improve everyone's learning in the technological field",
-            },
-            {
-                question:
-                "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
-                answer: "Respuesta:https://github.com/facebook/react/blob/master/packages/react/src/ReactHooks.js#L104",
-            },
-            {
-                question: "code is poetry, because:",
-                answer: "Respuesta: The code is poetry because through it we shape our desires, feelings,frustrations and emotions, all in order to create something new, something that can build or destroy.",
-            },
-        ],
-    },
-}
 
 export { sendInformation, validateInformation };
