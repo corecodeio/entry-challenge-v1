@@ -5,7 +5,6 @@ import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
 import { Request , Response } from 'express';
-import { sendInformation, validateInformation } from './client';
 
 export const router = express.Router({
   strict: true,
