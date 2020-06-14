@@ -5,7 +5,7 @@ dotEnv.config();
 
 const sendSchema = async () => {
   try {
-    await Axios.post("http://localhost:80", {
+    const response = await Axios.post(process.env.HOST, {
       contactInfo: {
         fullName: "Lucas Guillermo Solares Figueroa",
         emailAddress: "solareslucas.figueroa@gmail.com",
@@ -37,9 +37,35 @@ const sendSchema = async () => {
         ],
       },
     });
+    console.log({
+      status: response.status,
+      data: response.data,
+    });
   } catch (error) {
     console.error(error);
   }
 };
 
-sendSchema();
+const getCredential = async () => {
+  try {
+    const response = await Axios.get(
+      `${process.env.HOST}/solareslucas.figueroa@gmail.com`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-password": process.env.PASSWORD,
+        },
+      },
+    );
+    console.log({
+      status: response.status,
+      data: response.data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+sendSchema()
+  .then(() => getCredential())
+  .catch((error) => console.error(error));
