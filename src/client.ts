@@ -1,7 +1,6 @@
 import { request } from "http";
 import data from "./data.json";
-
-const userPassword = process.env.SERVER_PASSWORD;
+const password = process.env.CLAVE_DE_ACCESO;
 
 async function sendInformation() {
   const req = request(
@@ -31,7 +30,7 @@ async function validateInformation() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-password": userPassword,
+        "x-password": password,
       },
     },
     (response) => {
