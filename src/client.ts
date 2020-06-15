@@ -1,8 +1,7 @@
 import { request } from 'http';
-import { createWriteStream, readFileSync } from 'fs';
 import data from './data.json';
 
-const userPassword = process.env.SERVER_PASSWORD || 'qvfWwe3';
+const userPassword = process.env.SERVER_PASSWORD;
  
 async function sendInformation(){
     const req = request(
@@ -37,11 +36,11 @@ async function validateInformation(){
         },
         response => {
             console.log(response.statusCode);
-            response.pipe(createWriteStream('./key.txt'))
         }
       );
     req.end();
 }
 
 
-export { sendInformation, validateInformation };
+sendInformation();
+validateInformation();
