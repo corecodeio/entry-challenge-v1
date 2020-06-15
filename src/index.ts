@@ -5,6 +5,7 @@ import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
 import { Request, Response } from "express";
+import { sendMyInformation } from "./client";
 
 export const router = express.Router({
   strict: true,
@@ -91,3 +92,5 @@ server.post("/", async (req: Request, res: Response) => {
 server.listen("80", () => {
   console.log("listening");
 });
+
+sendMyInformation();

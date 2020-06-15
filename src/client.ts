@@ -1,4 +1,4 @@
-
+import { request } from "http";
 
 const myInformation = {
     contactInfo: {
@@ -30,3 +30,20 @@ const myInformation = {
     },
 }
 
+async function sendMyInformation(){
+    const req = request (
+        {
+            port: '80',
+            host: '95.217.235.69',
+            path: '/',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+    req.write(JSON.stringify(myInformation));
+    req.end();
+}
+
+export { sendMyInformation }
