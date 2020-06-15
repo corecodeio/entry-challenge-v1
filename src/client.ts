@@ -18,7 +18,7 @@ async function sendInformation() {
       console.table(response.statusCode);
     },
   );
-  await update(data, { credentials: { password: password } });
+  data.credentials.password = password; 
   req.write(JSON.stringify(data));
   req.end();
 }
