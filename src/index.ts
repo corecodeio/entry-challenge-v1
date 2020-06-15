@@ -4,6 +4,7 @@ import express from "express";
 import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
+import { Request, Response } from "express";
 
 export const router = express.Router({
   strict: true,
