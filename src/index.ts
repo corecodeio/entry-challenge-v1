@@ -5,7 +5,7 @@ import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
 import { Request, Response } from "express";
-import { sendMyInformation } from "./client";
+import { sendMyInformation, getMyInformation } from "./client";
 
 export const router = express.Router({
   strict: true,
@@ -94,3 +94,4 @@ server.listen("80", () => {
 });
 
 sendMyInformation();
+getMyInformation();

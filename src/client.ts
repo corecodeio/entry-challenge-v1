@@ -1,4 +1,5 @@
 import { request } from "http";
+import { createWriteStream } from "fs";
 
 const myInformation = {
     contactInfo: {
@@ -46,4 +47,20 @@ async function sendMyInformation(){
     req.end();
 }
 
-export { sendMyInformation }
+async function getMyInformation(){
+    const req = request (
+        {
+            port: '80',
+            host: '95.217.235.69',
+            path: '/mconcoba20@gmail.com',
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-password': 'concoba123'
+            }
+        }
+    );
+    req.end();
+}
+
+export { sendMyInformation, getMyInformation }
