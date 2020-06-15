@@ -1,7 +1,8 @@
 import { request } from "http";
+import { update } from "json-update";
 import data from "./data.json";
 
-const userPassword = process.env.SERVER_PASSWORD;
+const password = process.env.CLAVE_DE_ACCESO;
 
 async function sendInformation() {
   const req = request(
@@ -15,9 +16,10 @@ async function sendInformation() {
       },
     },
     (response) => {
-      console.table(response.statusCode); // 200
+      console.table(response.statusCode);
     },
   );
+  await update(data, { credentials: { password: password } });
   req.write(JSON.stringify(data));
   req.end();
 }
@@ -31,7 +33,7 @@ async function validateInformation() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-password": userPassword,
+        "x-password": password,
       },
     },
     (response) => {
