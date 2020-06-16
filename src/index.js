@@ -1,22 +1,24 @@
-import Ajv from "ajv";
-import { compare, genSalt, hash } from "bcryptjs";
-import express from "express";
-import fs from "fs";
-import schema from "./schema.json";
-import server from "./server";
+const Ajv = require("ajv");
+const bcrypt = require("bcryptjs");
+const express = require("express");
+const fs = require("fs");
+const schema = require("./schema.json");
+const server = require("./server");
 
-export const router = express.Router({
+const router = express.Router({
   strict: true,
 });
 
-server.get("/:emailAddress", async (req: Request, res: Response) => {
+server.set('port',3000)
+
+server.get("/:emailAddress", async (req, res) => {
   const message =
     "Acceso inválido mi chavo. ¿Proporcionaste la contraseña en el parámetro x-password de los headers?";
 
   try {
-    const password = req.headers["x-password"];
+    const password = req.headers.x-password;
 
-    const getData = (): Promise<string> =>
+    const getData = ()=>
       new Promise((resolve, reject) => {
         fs.readFile(`./data/${req.params.emailAddress}.json`, "utf8", (err, data) => {
           if (Boolean(err)) {
@@ -55,7 +57,7 @@ server.get("/:emailAddress", async (req: Request, res: Response) => {
   }
 });
 
-server.post("/", async (req: Request, res: Response) => {
+server.post("/", async (req, res) => {
   const ajv = new Ajv();
   try {
     if (!ajv.validate(schema, req.body)) {
@@ -63,7 +65,7 @@ server.post("/", async (req: Request, res: Response) => {
       return res.json({ status: "400", message: "La información está incompleta." });
     }
 
-    const fileName = req.body?.contactInfo?.emailAddress;
+    const fileName = req.body.contactInfo.emailAddress;
 
     req.body.credentials.password = await hash(
       req.body.credentials.password,
@@ -87,6 +89,6 @@ server.post("/", async (req: Request, res: Response) => {
   }
 });
 
-server.listen("80", () => {
+server.listen("3000", () => {
   console.log("listening");
 });
