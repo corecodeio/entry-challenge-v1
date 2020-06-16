@@ -3,12 +3,9 @@ import * as dotEnv from "dotenv";
 
 dotEnv.config();
 
-import data from './data';
-
-
 const sendSchema = async () => {
   try {
-    console.log(data);
+    const data = (await import('./data')).default
     const response = await Axios.post(process.env.HOST, data);
     console.log({
       status: response.status,
