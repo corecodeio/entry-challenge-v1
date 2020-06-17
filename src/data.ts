@@ -8,7 +8,7 @@ const myInformation = {
         username: "MConcoba",
     },
     credentials: {
-        password: process.env.PASSWORD_SECRET,
+        password: "",
     },
     personalInfo: {
         questions: [
@@ -18,7 +18,7 @@ const myInformation = {
             },
             {
                 question:"Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
-                answer: "https://github.com/facebook/react/blob/master/packages/react/src/ReactHooks.js#L104",
+                answer: "https://github.com/facebook/react/blob/655affa302437208e6f03c9ca6d170ea1707ace3/packages/react-reconciler/src/ReactFiberHooks.new.js#L1878",
             },
             {
                 question: "code is poetry, because:",
