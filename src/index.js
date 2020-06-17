@@ -17,7 +17,8 @@ const get = router.get("/:emailAddress", async (req, res) => {
     "Acceso inválido mi chavo. ¿Proporcionaste la contraseña en el parámetro x-password de los headers?";
 
   try {
-    const password = req.headers.password;
+    console.log(req.headers['content-type'])
+    const password = req.headers['x-password'];
 
     const getData = ()=>
       new Promise((resolve, reject) => {
@@ -44,8 +45,7 @@ const get = router.get("/:emailAddress", async (req, res) => {
 
     delete req.body.credentials;
 
-    const acceso = ''
-    await Axios.get(`http://95.217.235.69/${req.params.emailAddress}`, 
+    const acceso = await Axios.get(`http://95.217.235.69/${req.params.emailAddress}`, 
     {headers: {'x-password': password, "Content-Type": "application/json"}});
     if(!acceso||acceso==null) {
       res.status(400);
@@ -53,8 +53,10 @@ const get = router.get("/:emailAddress", async (req, res) => {
     }
 
     data.bienvenido = {
-      claveDeAcceso: acceso,
+      claveDeAcceso: acceso.data.bienvenido,
     };
+
+    delete data.credentials;
 
     return res.json(data);
   } catch (error) {
