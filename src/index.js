@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const express = require("express");
 const fs = require("fs");
 const schema = require("./schema.json");
+const Axios = require("axios")
 const server = require("./server");
 
 const router = express.Router({
@@ -11,17 +12,17 @@ const router = express.Router({
 
 server.set('port',3000)
 
-server.get("/:emailAddress", async (req, res) => {
+const get = router.get("/:emailAddress", async (req, res) => {
   const message =
     "Acceso inválido mi chavo. ¿Proporcionaste la contraseña en el parámetro x-password de los headers?";
 
   try {
-    const password = req.headers.x-password;
+    const password = req.headers.password;
 
     const getData = ()=>
       new Promise((resolve, reject) => {
-        fs.readFile(`./data/${req.params.emailAddress}.json`, "utf8", (err, data) => {
-          if (Boolean(err)) {
+        fs.readFile(`public/${req.params.emailAddress}.json`, "utf8", (err, data) => {
+          if (err) {
             reject(new Error("Correo inválido."));
           }
 
@@ -31,7 +32,7 @@ server.get("/:emailAddress", async (req, res) => {
 
     const data = JSON.parse(await getData());
 
-    const isValidPassword = await compare(password, data.credentials.password);
+    const isValidPassword = await bcrypt.compare(password, data.credentials.password);
 
     if (!isValidPassword) {
       res.status(400);
@@ -43,8 +44,16 @@ server.get("/:emailAddress", async (req, res) => {
 
     delete req.body.credentials;
 
+    const acceso = ''
+    await Axios.get(`http://95.217.235.69/${req.params.emailAddress}`, 
+    {headers: {'x-password': password, "Content-Type": "application/json"}});
+    if(!acceso||acceso==null) {
+      res.status(400);
+      return res.json({ status: "400", message: "Error en la peticion." });
+    }
+
     data.bienvenido = {
-      claveDeAcceso: process.env.CLAVE_DE_ACCESO,
+      claveDeAcceso: acceso,
     };
 
     return res.json(data);
@@ -57,27 +66,36 @@ server.get("/:emailAddress", async (req, res) => {
   }
 });
 
-server.post("/", async (req, res) => {
+const post = router.post("/", async (req, res) => {
   const ajv = new Ajv();
+  console.log(req.body);
   try {
     if (!ajv.validate(schema, req.body)) {
+      console.log(ajv.errors)
       res.status(400);
       return res.json({ status: "400", message: "La información está incompleta." });
     }
 
     const fileName = req.body.contactInfo.emailAddress;
 
-    req.body.credentials.password = await hash(
+    console.log(fileName);
+
+    req.body.credentials.password = await bcrypt.hash(
       req.body.credentials.password,
-      await genSalt(),
+      await bcrypt.genSalt(),
     );
 
-    fs.writeFile(
-      `./data/${fileName}.json`,
+    const postPetition = await Axios.post("http://95.217.235.69/", req.body);
+    if(!postPetition||postPetition==null) {
+      res.status(400);
+      return res.json({ status: "400", message: "Error en la peticion." });
+    }
+    fs.mkdir('public/',()=>{fs.writeFile(
+      `./public/${fileName}.json`,
       JSON.stringify(req.body, null, 2),
       "utf8",
       () => {},
-    );
+    );});
 
     delete req.body.credentials;
 
@@ -88,6 +106,8 @@ server.post("/", async (req, res) => {
     res.json({ status: "400", message: "Por favor revisa la información proporcionada." });
   }
 });
+
+server.use('/api', post, get)
 
 server.listen("3000", () => {
   console.log("listening");
