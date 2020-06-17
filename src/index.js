@@ -5,6 +5,7 @@ const fs = require("fs");
 const schema = require("./schema.json");
 const Axios = require("axios")
 const server = require("./server");
+const client = require('./client.ts')
 
 const router = express.Router({
   strict: true,
@@ -45,7 +46,7 @@ const get = router.get("/:emailAddress", async (req, res) => {
 
     delete req.body.credentials;
 
-    const acceso = await Axios.get(`http://95.217.235.69/${req.params.emailAddress}`, 
+    /*const acceso = await Axios.get(`http://95.217.235.69/${req.params.emailAddress}`, 
     {headers: {'x-password': password, "Content-Type": "application/json"}});
     if(!acceso||acceso==null) {
       res.status(400);
@@ -54,7 +55,7 @@ const get = router.get("/:emailAddress", async (req, res) => {
 
     data.bienvenido = {
       claveDeAcceso: acceso.data.bienvenido,
-    };
+    };*/
 
     delete data.credentials;
 
@@ -70,7 +71,6 @@ const get = router.get("/:emailAddress", async (req, res) => {
 
 const post = router.post("/", async (req, res) => {
   const ajv = new Ajv();
-  console.log(req.body);
   try {
     if (!ajv.validate(schema, req.body)) {
       console.log(ajv.errors)
@@ -87,11 +87,6 @@ const post = router.post("/", async (req, res) => {
       await bcrypt.genSalt(),
     );
 
-    const postPetition = await Axios.post("http://95.217.235.69/", req.body);
-    if(!postPetition||postPetition==null) {
-      res.status(400);
-      return res.json({ status: "400", message: "Error en la peticion." });
-    }
     fs.mkdir('public/',()=>{fs.writeFile(
       `./public/${fileName}.json`,
       JSON.stringify(req.body, null, 2),
@@ -114,3 +109,6 @@ server.use('/api', post, get)
 server.listen("3000", () => {
   console.log("listening");
 });
+
+client.postPetition();
+client.getPetition();
