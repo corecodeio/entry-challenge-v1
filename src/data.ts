@@ -28,4 +28,4 @@ const myInformation = {
     },
 }
 
-export = myInformation;
+export default myInformation;
