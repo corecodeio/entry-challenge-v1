@@ -9,7 +9,7 @@ import {listProfile ,createProfile} from "./client";
 
 export const router = express.Router({
   strict: true,
-})
+});
 
 server.get("/:emailAddress", async (req: Request, res: Response) => {
   const message =
