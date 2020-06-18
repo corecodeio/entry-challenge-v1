@@ -41,7 +41,6 @@ var url = 'http://95.217.235.69/';
 //how to import JSON
 var data = require("./data.json");
 var email = data.contactInfo.emailAddress;
-console.log(email); // output 'testing'
 //optional paramethers
 var postParamethers = {
     method: "POST",
@@ -94,7 +93,7 @@ function getData() {
                     return [4 /*yield*/, response.json()];
                 case 2:
                     json = _a.sent();
-                    console.log(json.contactInfo.emailAddress);
+                    console.log(json.bienvenido.claveDeAcceso);
                     console.log("Did a get.");
                     return [3 /*break*/, 4];
                 case 3:
@@ -105,5 +104,5 @@ function getData() {
         });
     });
 }
-postData()["catch"](function (err) { console.log('ERROR: ', err.message); });
-getData()["catch"](function (err) { console.log('ERROR: ', err.message); });
+postData()["catch"](function (err) { console.log('ERROR: ', err.message); }); // need catch or it won't work
+getData()["catch"](function (err) { console.log('ERROR: ', err.message); }); // need catch or it won't work
