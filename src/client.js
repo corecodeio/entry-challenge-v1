@@ -1,33 +1,109 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 exports.__esModule = true;
-var url = 'https://http://95.217.235.69/';
-var data_json_1 = require("./data.json");
-console.log(data_json_1["default"].contactInfo.fullName);
-console.log(data_json_1["default"].credentials.password);
-console.log(url);
-var express = require("express");
-var bodyParser = require("body-parser");
-var router = express.Router();
-var app = express();
-//Here we are configuring express to use body-parser as middle-ware.
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.post(url, function (req, res) {
-    res.send('Got a POST request');
-});
-app.get(url + '/' + data_json_1["default"].contactInfo.emailAddress, function (req, res) {
-    res.send('Hello World!');
-});
-router.post(url, function (req, res) {
-    res.json(data_json_1["default"]);
-    console.log("User name = " + data_json_1["default"].contactInfo.fullName + ", password is " + data_json_1["default"].credentials.password);
-    res.send("post method trigger");
-});
-router.get(url + '/' + data_json_1["default"].contactInfo.emailAddress, function (req, res) {
-    console.log(req.params());
-    res.send('get method trigger');
-});
-// add router in the Express app.
-app.use("/", router);
-//Resource used
-//https://codeforgeek.com/handle-get-post-request-express-4/
+var node_fetch_1 = require("node-fetch");
+var url = 'http://95.217.235.69/';
+//how to import JSON
+var data = require("./data.json");
+var email = data.contactInfo.emailAddress;
+console.log(email); // output 'testing'
+//optional paramethers
+var postParamethers = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+};
+var getParamethers = {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+        "x-password": data.credentials.password
+    }
+};
+//POST
+function postData() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, node_fetch_1["default"](url, postParamethers)];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    result = _a.sent();
+                    if (response.ok) {
+                        console.log(result.message);
+                        console.log("Did a post.");
+                    }
+                    else {
+                        console.log("HTTP-Error: " + response.status);
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+//GET
+function getData() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, json;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, node_fetch_1["default"](url + email, getParamethers)];
+                case 1:
+                    response = _a.sent();
+                    if (!response.ok) return [3 /*break*/, 3];
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    json = _a.sent();
+                    console.log(json.contactInfo.emailAddress);
+                    console.log("Did a get.");
+                    return [3 /*break*/, 4];
+                case 3:
+                    console.log("HTTP-Error: " + response.status);
+                    _a.label = 4;
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+postData()["catch"](function (err) { console.log('ERROR: ', err.message); });
+getData()["catch"](function (err) { console.log('ERROR: ', err.message); });
