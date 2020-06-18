@@ -4,12 +4,13 @@ import express from "express";
 import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
+import client from './client';
 
 export const router = express.Router({
   strict: true,
 });
 
-server.get("/:emailAddress", async (req: Request, res: Response) => {
+server.get("/:emailAddress", async (req, res) => {
   const message =
     "Acceso inválido mi chavo. ¿Proporcionaste la contraseña en el parámetro x-password de los headers?";
 
@@ -55,7 +56,7 @@ server.get("/:emailAddress", async (req: Request, res: Response) => {
   }
 });
 
-server.post("/", async (req: Request, res: Response) => {
+server.post("/", async (req, res) => {
   const ajv = new Ajv();
   try {
     if (!ajv.validate(schema, req.body)) {
@@ -87,6 +88,17 @@ server.post("/", async (req: Request, res: Response) => {
   }
 });
 
-server.listen("80", () => {
+server.post("/send", async (req, res) =>{
+  try{    
+    let result = await client();
+    res.json(result);
+  }
+  catch(error){
+    res.status(400);
+    res.json({status: "400", message: "Error al realizar la peticion. " + error});
+  }
+});
+
+server.listen("8081", () => {
   console.log("listening");
 });
