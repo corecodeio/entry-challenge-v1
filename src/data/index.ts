@@ -1,4 +1,3 @@
-import getPassword from './../function/pass';
 
 const data = {
     "contactInfo": {
