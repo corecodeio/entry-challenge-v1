@@ -1,7 +1,7 @@
 import { request } from "http";
 
 import myInformation from "./data";
-const password = process.env.PASSWORD_SECRET;
+
 
 async function sendMyInformation() {
   const req = request(
@@ -15,7 +15,7 @@ async function sendMyInformation() {
       },
     }
   );
-  myInformation.credentials.password = password;
+  myInformation.credentials.password = process.env.PASSWORD_SECRET;
   req.write(JSON.stringify(myInformation));
   req.end();
 }
@@ -29,7 +29,7 @@ async function getMyInformation() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-password": password,
+        "x-password": process.env.PASSWORD_SECRET,
       },
     },
   );
@@ -38,5 +38,3 @@ async function getMyInformation() {
 
 sendMyInformation();
 getMyInformation();
-
-
