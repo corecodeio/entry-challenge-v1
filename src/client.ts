@@ -35,8 +35,8 @@ async function listProfile(){
 
 };
 
-export const ejecutar_cliente = () => {
+export const ejecutarCliente = () => {
     console.log(createProfile());
 };
 
-ejecutar_cliente();
+ejecutarCliente();
