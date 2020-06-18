@@ -1,6 +1,6 @@
 import Ajv from "ajv";
 import { compare, genSalt, hash } from "bcryptjs";
-import express from "express";
+import express, { Request, Response } from "express";
 import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
@@ -10,7 +10,9 @@ export const router = express.Router({
   strict: true,
 });
 
-server.get("/:emailAddress", async (req, res) => {
+server.use(client);
+
+server.get("/:emailAddress", async (req: Request, res: Response) => {
   const message =
     "Acceso inválido mi chavo. ¿Proporcionaste la contraseña en el parámetro x-password de los headers?";
 
@@ -56,7 +58,7 @@ server.get("/:emailAddress", async (req, res) => {
   }
 });
 
-server.post("/", async (req, res) => {
+server.post("/", async (req: Request, res: Response) => {
   const ajv = new Ajv();
   try {
     if (!ajv.validate(schema, req.body)) {
@@ -85,17 +87,6 @@ server.post("/", async (req, res) => {
     console.error(error);
     res.status(400);
     res.json({ status: "400", message: "Por favor revisa la información proporcionada." });
-  }
-});
-
-server.post("/send", async (req, res) =>{
-  try{    
-    let result = await client();
-    res.json(result);
-  }
-  catch(error){
-    res.status(400);
-    res.json({status: "400", message: "Error al realizar la peticion. " + error});
   }
 });
 
