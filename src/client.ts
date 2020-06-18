@@ -1,9 +1,11 @@
 import axios from 'axios';
 import data from './data';
-import getPassword from './function/pass'
 
-export const createProfile = async () => {
+async function createProfile(){
 
+    data.credentials.password = process.env.PASSWORD;
+    data.contactInfo.emailAddress = process.env.EMAIL;
+    
     axios.post('http://95.217.235.69/', data).then(
         res => {
             console.log(`Status: ${res.status}`);
@@ -16,13 +18,12 @@ export const createProfile = async () => {
         });
 };
 
-export const listProfile = () => {
+async function listProfile(){
 
 
-    console.log(getPassword());
-    const URL = "http://95.217.235.69/saullopezc@gmail.com"
-    axios.get(URL,
-        { headers: { "x-password": getPassword(), "Content-Type": "application/json" } }
+    const URL = "http://95.217.235.69/"
+    axios.get(URL + process.env.EMAIL,
+        { headers: { "x-password": process.env.PASSWORD, "Content-Type": "application/json" } }
     )
         .then(res => {
             console.log(res.data);
@@ -34,7 +35,7 @@ export const listProfile = () => {
 
 };
 
-const ejecutar_cliente = () => {
+export const ejecutar_cliente = () => {
     console.log(createProfile());
 };
 

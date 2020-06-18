@@ -3,14 +3,14 @@ import getPassword from './../function/pass';
 const data = {
     "contactInfo": {
         "fullName": "Saul Lopez",
-        "emailAddress": "saullopezc@gmail.com"
+        "emailAddress": ""
     },
     "github": {
         "profileURL": "https://github.com/saullopezc",
         "username": "saullopezc"
     },
     "credentials": {
-        "password": getPassword()
+        "password": ""
     },
     "personalInfo": {
         "questions": [
