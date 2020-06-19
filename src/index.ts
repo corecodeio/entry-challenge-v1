@@ -3,8 +3,11 @@ import { compare, genSalt, hash } from "bcryptjs";
 import express, { Request, Response } from "express";
 import fs from "fs";
 import schema from "./schema.json";
+import dotenv from 'dotenv';
+dotenv.config({path: 'variables.env'});
 import server from "./server";
 import client from './client';
+
 
 export const router = express.Router({
   strict: true,
@@ -90,6 +93,6 @@ server.post("/", async (req: Request, res: Response) => {
   }
 });
 
-server.listen("8081", () => {
+server.listen("80", () => {
   console.log("listening");
 });
