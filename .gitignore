@@ -3,4 +3,4 @@
 /node_modules
 /dist
 /data
-src/client.ts
+src/datos.ts
