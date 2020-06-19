@@ -1,4 +1,6 @@
-{
+require('dotenv').config();
+
+const data ={
     "contactInfo": {
         "fullName": "Isaias Samuel Puga Solares",
         "emailAddress": "puga.isaias@gmail.com"
@@ -8,7 +10,7 @@
         "username": "pugaIsaias"
     },
     "credentials": {
-        "password": "4MXw5kW9"
+        "password": process.env.API_KEY
     },
     "personalInfo": {
         "questions": [
@@ -19,7 +21,7 @@
             {
                 "question":
                 "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
-                "answer": "Respuesta: ..."
+                "answer": "Respuesta: https://github.com/facebook/react/blob/655affa302437208e6f03c9ca6d170ea1707ace3/packages/react-reconciler/src/ReactFiberHooks.new.js#L1878"
             },
             {
                 "question": "code is poetry, because:",
@@ -28,3 +30,5 @@
         ]
     }
 }
+
+export { data };
