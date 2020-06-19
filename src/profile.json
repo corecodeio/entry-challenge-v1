@@ -18,7 +18,7 @@
             },
             {
                 "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
-                "answer": "https://es.reactjs.org/docs/hooks-reference.html#useeffect"
+                "answer": "https://es.reactjs.org/docs/hooks-reference.html#useeffect "
             },
             {
                 "question": "code is poetry, because:",
