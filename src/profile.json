@@ -1,0 +1,29 @@
+{
+    "contactInfo": {
+        "fullName": "",
+        "emailAddress": ""
+    },
+    "github": {
+        "profileURL": "",
+        "username": ""
+    },
+    "credentials": {
+        "password": "Cambia esta contraseña a una que sólo tú sepas",
+    },
+    "personalInfo": {
+        "questions": [
+            {
+                "question": "If I was a Sr. Programmer, I would like to build:",
+                "answer": "Respuesta: ..."
+            },
+            {
+                "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
+                "answer": "Respuesta: ..."
+            },
+            {
+                "question": "code is poetry, because:",
+                "answer": "Respuesta: ..."
+            }
+        ]
+    }
+}
