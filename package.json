@@ -11,12 +11,7 @@
   "author": "netpoe",
   "license": "ISC",
   "dependencies": {
-    "ajv": "^6.12.2",
-    "axios": "^0.19.2",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
     "fetch": "^1.1.0",
     "node-fetch": "^2.6.0",
     "ts-node-dev": "^1.0.0-pre.44"
@@ -26,9 +21,6 @@
     "printWidth": 92
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/body-parser": "^1.19.0",
-    "@types/express": "^4.17.6",
     "@types/node": "^14.0.13",
     "typescript": "^3.9.5"
   }
