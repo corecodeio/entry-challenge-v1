@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import {config} from 'dotenv';
 import  axios from 'axios'
-import { datos } from './datos'
+import { datos } from './data'
 
 config({path: resolve(__dirname, "./.env")});
 
