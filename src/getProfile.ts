@@ -14,8 +14,9 @@ export async function getProfile(url: string, port: number, email: string, passw
           "x-password": password,
         },
       },
+
       (response) => {        
-        console.log(response.statusCode);        
+          console.log(response.statusCode);                      
       },
     );
     req.end();
