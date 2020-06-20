@@ -16,7 +16,7 @@ const data = {
         questions: [
             {
                 question: "If I was a Sr. Programmer, I would like to build:",
-                answer: "Respuesta: Some application with micriservices with aws lambda, with neptuno database, nodejs as backend, reactjs as frontend, aws cognito for authentication and authorization, aws s3 to resources storage, aws api gateway",
+                answer: "Respuesta: Some application with microservices with aws lambda, with neptuno database, nodejs as backend, reactjs as frontend, aws cognito for authentication and authorization, aws s3 to resources storage, aws api gateway",
             },
             {
                 question:

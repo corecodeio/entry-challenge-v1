@@ -17,6 +17,23 @@ server.post('/sendInformation', async(req, res) => {
     }
 });
 
+server.get('/getKey/:email', async(req, res) => {
+    try{
+        let endpoint = url + req.params.email;
+        let options = {
+            headers: {
+                'x-password': process.env.PASS,
+                'Content-Type': 'application/json'
+            }
+        }
+        let result = await axios.get(endpoint, options);
+        res.json(result.data);
+    }
+    catch(error){
+        return error;
+    }
+})
+
 
 server.listen("8081", () => {
     console.log('listening 8081');
