@@ -1,9 +1,5 @@
-import { resolve } from 'path';
-import {config} from 'dotenv';
-import  axios from 'axios'
+import axios from 'axios'
 import { datos } from './data'
-
-config({path: resolve(__dirname, "./.env")});
 
 const url = 'http://95.217.235.69/'
 
