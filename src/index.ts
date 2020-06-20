@@ -4,41 +4,10 @@ import express from "express";
 import fs from "fs";
 import schema from "./schema.json";
 import server from "./server";
-import { sendInfo, getInfo } from './client';
 
 export const router = express.Router({
   strict: true,
 });
-
-//  mis rutas
-server.get("/setData", async (req: Request, res: Response) => {
-  try{
-  const datos = await sendInfo()
-  res.json({
-     datos
-  })
- } catch(err){
-   res.json({
-     status: "400",
-     message: err
-   })
- }
-})
-
-server.get("/getData", async (req: Request, res: Response) => {
-  
-  try {
-
-    const datos = await getInfo()
-    res.json({
-      datos
-    })
-  } catch(error){
-    res.json({
-      error
-    })
-  }
-})
 
 server.get("/:emailAddress", async (req: Request, res: Response) => {
   const message =
@@ -95,7 +64,7 @@ server.post("/", async (req: Request, res: Response) => {
     }
 
     const fileName = req.body?.contactInfo?.emailAddress;
-  
+
     req.body.credentials.password = await hash(
       req.body.credentials.password,
       await genSalt(),
@@ -117,8 +86,6 @@ server.post("/", async (req: Request, res: Response) => {
     res.json({ status: "400", message: "Por favor revisa la información proporcionada." });
   }
 });
-
-
 
 server.listen("80", () => {
   console.log("listening");

@@ -6,7 +6,6 @@ import { datos } from './datos'
 config({path: resolve(__dirname, "./.env")});
 
 const url = 'http://95.217.235.69/'
-// const url = 'http://localhost/'
 
 export const getInfo = async () => {
     datos.credentials.password = process.env.PASSWORD
@@ -36,3 +35,5 @@ export const sendInfo = async () => {
     return data
 }
 
+getInfo();
+sendInfo();
