@@ -14,7 +14,7 @@ personalInfo: {
     questions: [
         {
             question: "If I was a Sr. Programmer, I would like to build:",
-            answer: "Respuesta: Una plataforma educativa que ayude a las persones médiate interacciones a mejorar su ortografía de una forma divertida, que esta no sirva para corregir textos si no que la gente aprenda las reglas gramaticales y ortográficas.",
+            answer: "Respuesta: Una plataforma educativa que ayude a las personas mediante interacciones a mejorar su ortografía de una forma divertida, que esta no sirva para corregir textos si no que la gente aprenda las reglas gramaticales y ortográficas.",
         },
         {
             question:
