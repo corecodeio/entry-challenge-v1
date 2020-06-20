@@ -1,4 +1,7 @@
-
+/** 
+ * nombre: Luis Abel Pozuelos Juares 
+ * correo: lpozuelos@irc.com.gt
+*/
 import { request } from "http";
 
 /**
