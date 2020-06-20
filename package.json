@@ -4,8 +4,8 @@
   "description": "Applicants must complete this challenge to enter core-code.io v1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --no-notify --respawn ./src",
+    "test": "ts-node-dev --no-notify --respawn ./src/client",
+    "start": "ts-node-dev --no-notify --respawn ./src",    
     "start:debug": "ts-node-dev --inspect --no-notify --respawn ./src"
   },
   "author": "netpoe",

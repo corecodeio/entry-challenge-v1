@@ -1,13 +1,13 @@
 import axios from 'axios';
-import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config({path: 'variables.env'});
 import data from './data';
-
-const router = express.Router();
+import server from './server';
 
 
 const url = 'http://95.217.235.69/'
 
-router.post('/sendInformation', async(req, res) => {
+server.post('/sendInformation', async(req, res) => {
     try {
         let result = await axios.post(url, data);
         res.json(result.data);
@@ -17,4 +17,7 @@ router.post('/sendInformation', async(req, res) => {
     }
 });
 
-export default router;
+
+server.listen("8081", () => {
+    console.log('listening 8081');
+})

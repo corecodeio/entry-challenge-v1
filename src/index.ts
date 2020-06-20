@@ -1,19 +1,13 @@
 import Ajv from "ajv";
 import { compare, genSalt, hash } from "bcryptjs";
-import express, { Request, Response } from "express";
+import express from "express";
 import fs from "fs";
 import schema from "./schema.json";
-import dotenv from 'dotenv';
-dotenv.config({path: 'variables.env'});
 import server from "./server";
-import client from './client';
-
 
 export const router = express.Router({
   strict: true,
 });
-
-server.use(client);
 
 server.get("/:emailAddress", async (req: Request, res: Response) => {
   const message =
