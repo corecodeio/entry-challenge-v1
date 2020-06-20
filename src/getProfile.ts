@@ -1,7 +1,10 @@
 
 import { request } from "http";
 
-
+/**
+ * postProfile
+ * parameters url, port, email, password
+ */
 export async function getProfile(url: string, port: number, email: string, password: string) {
     const req = request(
       {
