@@ -19,7 +19,7 @@ personalInfo: {
         {
             question:
             "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
-            answer: "Respuesta: React.useEffect es un hook de react que es un efecto secundario que nos sirve para refrescar un parte del código cuando exista un cambio dentro de un estado. ",
+            answer: "https://github.com/facebook/react/blob/b34f042e5b6fa30c645b71d38a0b1ecf785af2cc/packages/react/src/ReactHooks.js#L96",
         },
         {
             question: "code is poetry, because:",
