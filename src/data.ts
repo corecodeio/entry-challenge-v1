@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const data ={
+export const data ={
     "contactInfo": {
         "fullName": "Isaias Samuel Puga Solares",
         "emailAddress": "puga.isaias@gmail.com"
@@ -10,7 +10,7 @@ const data ={
         "username": "pugaIsaias"
     },
     "credentials": {
-        "password": process.env.API_KEY
+        "password": process.env.API_PASSWORD
     },
     "personalInfo": {
         "questions": [
@@ -31,5 +31,4 @@ const data ={
     }
 }
 
-export { data };
 

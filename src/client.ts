@@ -1,5 +1,5 @@
-import {data}  from "./data";
 import fetch from 'node-fetch';
+import { data } from "./data";
 
 
 async function postData(){
@@ -14,13 +14,12 @@ async function postData(){
         body:  JSON.stringify(data)
     }
 
-    let response = await fetch(url,postParamethers);
-    let result = await response.json();
-    if (response.ok) {
+    try {
+        let response = await fetch(url,postParamethers);
+        let result = await response.json();
+      } catch (error) {
         
-    } else {
-        
-    }
+      }
     
 }
 
@@ -38,19 +37,17 @@ async function getData(){
     }
 
     const email = data.contactInfo.emailAddress;
-    let response = await fetch(url+email,getParamethers);
-    if (response.ok) { 
-        let json = await response.json();
-        
-      } else {
+    
+    try {
+        let response = await fetch(url+email,getParamethers);
+        let data = await response.json();
+      } catch (error) {
         
       }
 }
 
-postData()
-.catch((err) => { });
+postData();
 
-getData()
-.catch((err) => { }); 
+getData();
 
 
