@@ -5,37 +5,34 @@
     "title": "The root schema",
     "description": "The root schema comprises the entire JSON document.",
     "default": {},
-    "examples": [
-        {
-            "contactInfo": {
-                "fullName": "Gus",
-                "emailAddress": "gustavoandresibarra@gmail.com"
-            },
-            "github": {
-                "profileURL": "",
-                "username": ""
-            },
-            "credentials": {
-                "password": "password"
-            },
-            "personalInfo": {
-                "questions": [
-                    {
-                        "question": "If I was a Sr. Programmer, I would like to build:",
-                        "answer": "..."
-                    },
-                    {
-                        "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
-                        "answer": "..."
-                    },
-                    {
-                        "question": "code is poetry, because:",
-                        "answer": ""
-                    }
-                ]
-            }
+    "examples": [{
+        "contactInfo": {
+            "fullName": "Gus",
+            "emailAddress": "gustavoandresibarra@gmail.com"
+        },
+        "github": {
+            "profileURL": "",
+            "username": ""
+        },
+        "credentials": {
+            "password": "password"
+        },
+        "personalInfo": {
+            "questions": [{
+                    "question": "If I was a Sr. Programmer, I would like to build:",
+                    "answer": "..."
+                },
+                {
+                    "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
+                    "answer": "..."
+                },
+                {
+                    "question": "code is poetry, because:",
+                    "answer": ""
+                }
+            ]
         }
-    ],
+    }],
     "required": [
         "contactInfo",
         "github",
@@ -50,12 +47,10 @@
             "title": "The contactInfo schema",
             "description": "An explanation about the purpose of this instance.",
             "default": {},
-            "examples": [
-                {
-                    "fullName": "Gus",
-                    "emailAddress": "gustavoandresibarra@gmail.com"
-                }
-            ],
+            "examples": [{
+                "fullName": "Gus",
+                "emailAddress": "gustavoandresibarra@gmail.com"
+            }],
             "required": [
                 "fullName",
                 "emailAddress"
@@ -90,12 +85,10 @@
             "title": "The github schema",
             "description": "An explanation about the purpose of this instance.",
             "default": {},
-            "examples": [
-                {
-                    "profileURL": "",
-                    "username": ""
-                }
-            ],
+            "examples": [{
+                "profileURL": "",
+                "username": ""
+            }],
             "required": [
                 "profileURL",
                 "username"
@@ -130,11 +123,9 @@
             "title": "The credentials schema",
             "description": "An explanation about the purpose of this instance.",
             "default": {},
-            "examples": [
-                {
-                    "password": "password"
-                }
-            ],
+            "examples": [{
+                "password": "password"
+            }],
             "required": [
                 "password"
             ],
@@ -158,24 +149,21 @@
             "title": "The personalInfo schema",
             "description": "An explanation about the purpose of this instance.",
             "default": {},
-            "examples": [
-                {
-                    "questions": [
-                        {
-                            "question": "If I was a Sr. Programmer, I would like to build:",
-                            "answer": "..."
-                        },
-                        {
-                            "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
-                            "answer": "..."
-                        },
-                        {
-                            "question": "code is poetry, because:",
-                            "answer": ""
-                        }
-                    ]
-                }
-            ],
+            "examples": [{
+                "questions": [{
+                        "question": "If I was a Sr. Programmer, I would like to build:",
+                        "answer": "..."
+                    },
+                    {
+                        "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
+                        "answer": "..."
+                    },
+                    {
+                        "question": "code is poetry, because:",
+                        "answer": ""
+                    }
+                ]
+            }],
             "required": [
                 "questions"
             ],
@@ -188,8 +176,7 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": [],
                     "examples": [
-                        [
-                            {
+                        [{
                                 "question": "If I was a Sr. Programmer, I would like to build:",
                                 "answer": "..."
                             },
@@ -201,48 +188,44 @@
                     ],
                     "additionalItems": true,
                     "items": {
-                        "anyOf": [
-                            {
-                                "$id": "#/properties/personalInfo/properties/questions/items/anyOf/0",
-                                "type": "object",
-                                "title": "The first anyOf schema",
-                                "description": "An explanation about the purpose of this instance.",
-                                "default": {},
-                                "examples": [
-                                    {
-                                        "question": "If I was a Sr. Programmer, I would like to build:",
-                                        "answer": "..."
-                                    }
-                                ],
-                                "required": [
-                                    "question",
-                                    "answer"
-                                ],
-                                "additionalProperties": true,
-                                "properties": {
-                                    "question": {
-                                        "$id": "#/properties/personalInfo/properties/questions/items/anyOf/0/properties/question",
-                                        "type": "string",
-                                        "title": "The question schema",
-                                        "description": "An explanation about the purpose of this instance.",
-                                        "default": "",
-                                        "examples": [
-                                            "If I was a Sr. Programmer, I would like to build:"
-                                        ]
-                                    },
-                                    "answer": {
-                                        "$id": "#/properties/personalInfo/properties/questions/items/anyOf/0/properties/answer",
-                                        "type": "string",
-                                        "title": "The answer schema",
-                                        "description": "An explanation about the purpose of this instance.",
-                                        "default": "",
-                                        "examples": [
-                                            "..."
-                                        ]
-                                    }
+                        "anyOf": [{
+                            "$id": "#/properties/personalInfo/properties/questions/items/anyOf/0",
+                            "type": "object",
+                            "title": "The first anyOf schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [{
+                                "question": "If I was a Sr. Programmer, I would like to build:",
+                                "answer": "..."
+                            }],
+                            "required": [
+                                "question",
+                                "answer"
+                            ],
+                            "additionalProperties": true,
+                            "properties": {
+                                "question": {
+                                    "$id": "#/properties/personalInfo/properties/questions/items/anyOf/0/properties/question",
+                                    "type": "string",
+                                    "title": "The question schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "If I was a Sr. Programmer, I would like to build:"
+                                    ]
+                                },
+                                "answer": {
+                                    "$id": "#/properties/personalInfo/properties/questions/items/anyOf/0/properties/answer",
+                                    "type": "string",
+                                    "title": "The answer schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "..."
+                                    ]
                                 }
                             }
-                        ],
+                        }],
                         "$id": "#/properties/personalInfo/properties/questions/items"
                     }
                 }

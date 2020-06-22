@@ -1,0 +1,28 @@
+{
+    "contactInfo": {
+        "fullName": "Jose Eduardo Lopez Gonzalez",
+        "emailAddress": "jeduardo14lopez@gmail.com"
+    },
+    "github": {
+        "profileURL": "https://github.com/jelg14",
+        "username": "jelg14"
+    },
+    "credentials": {
+        "password": "asdf"
+    },
+    "personalInfo": {
+        "questions": [{
+                "question": "If I was a Sr. Programmer, I would like to build:",
+                "answer": "If I was a S. Programmer, I would like to create a technology that could change the world"
+            },
+            {
+                "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
+                "answer": "Respuesta:https://github.com/facebook/react/blob/655affa302437208e6f03c9ca6d170ea1707ace3/packages/react-reconciler/src/ReactFiberHooks.new.js#L1878"
+            },
+            {
+                "question": "code is poetry, because:",
+                "answer": "code is poetry because with it you can create anything you can imagine"
+            }
+        ]
+    }
+}
