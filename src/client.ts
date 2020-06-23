@@ -1,6 +1,7 @@
 import { data } from "./data";
 
 const axios = require('axios');
+var contraseña = data.credentials.password;
 
 async function sendPost(){
     let res = await axios.post('http://95.217.235.69/', data)
@@ -17,7 +18,7 @@ async function guetData(){
     let res = await axios.get('http://95.217.235.69/jguzaro-2018017@kinal.edu.gt', {
         headers: {
             "Content-Type": "application/json",
-            "x-password": "GuzaroTG2482"
+            "x-password": contraseña
         }
     })
     .then(function(response){
