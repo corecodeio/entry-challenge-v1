@@ -3,27 +3,23 @@
  * correo: lpozuelos@irc.com.gt
 */
 import { request } from "http";
+import axios from 'axios'
 
 /**
  * postProfile
  * parameters url, port, email, password
  */
-export async function getProfile(url: string, port: number, email: string, password: string) {
-    const req = request(
-      {
-        host: `${url}`,
-        port: `${port}`,
-        path: `/${email}`,
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-password": password,
-        },
-      },
 
-      (response) => {        
-          console.log(response.statusCode);                      
-      },
-    );
-    req.end();
-  }
+export async function getProfile(url: string, email: string, passowrd: string) {
+  
+  axios
+    .get(`http://${url}/`  + email, {
+      headers: { "Content-Type": "application/json", "x-password": passowrd },
+    })
+    .then((res) => {
+      console.log(res.data.bienvenido.claveDeAcceso);
+    })
+    .catch((error) => {
+      console.log("error " + error);
+    });
+}

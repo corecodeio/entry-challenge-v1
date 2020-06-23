@@ -18,7 +18,7 @@ server.get("/:emailAddress", async (req: Request, res: Response) => {
 
     const getData = (): Promise<string> =>
       new Promise((resolve, reject) => {
-        fs.readFile(`./data/${req.params.emailAddress}.json`, "utf8", (err, data) => {
+        fs.readFile(`./data/${req.conact.emailAddress}.json`, "utf8", (err, data) => {
           if (Boolean(err)) {
             reject(new Error("Correo inválido."));
           }
@@ -87,6 +87,6 @@ server.post("/", async (req: Request, res: Response) => {
   }
 });
 
-server.listen("80clear", () => {
+server.listen("8080", () => {
   console.log("listening");
 });

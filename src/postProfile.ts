@@ -2,29 +2,20 @@
  * nombre: Luis Abel Pozuelos Juares 
  * correo: lpozuelos@irc.com.gt
 */
-import { request } from "http";
 
+import axios from 'axios'
 
 /**
  * postProfile
- * parameters url, port, json data
+ * parameters url,  json data
  */
-export async function postProfile(url: string, port: number, profile: JSON) {
-    const req = request(
-        {
-          host: `${url}`,
-          port: `${port}`,
-          path: "/",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-        (response) => {
-          console.table(response.statusCode);
-        },
-      );    
-      req.write(JSON.stringify(profile));
-      req.end();
+export async function postProfile(url, profile) {
 
+  axios.post(`http://${url}/`, profile)
+    .then((res) => {
+      console.log(res.status);  
+    })
+    .catch((err) => {
+      console.error("error " + err);
+    });
 }
