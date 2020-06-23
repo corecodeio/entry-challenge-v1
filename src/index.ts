@@ -9,7 +9,7 @@ export const router = express.Router({
   strict: true,
 });
 
-server.get("/:emailAddress", async (req: Request, res: Response) => {
+server.get("/:emailAddress", async (req: express.Request, res: express.Response) => {
   const message =
     "Acceso inválido mi chavo. ¿Proporcionaste la contraseña en el parámetro x-password de los headers?";
 
@@ -55,7 +55,7 @@ server.get("/:emailAddress", async (req: Request, res: Response) => {
   }
 });
 
-server.post("/", async (req: Request, res: Response) => {
+server.post("/", async (req: express.Request, res: express.Response) => {
   const ajv = new Ajv();
   try {
     if (!ajv.validate(schema, req.body)) {
@@ -90,3 +90,4 @@ server.post("/", async (req: Request, res: Response) => {
 server.listen("80", () => {
   console.log("listening");
 });
+
