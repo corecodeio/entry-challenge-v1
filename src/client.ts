@@ -1,24 +1,24 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
-dotenv.config({path: 'variables.env'});
+dotenv.config({ path: 'variables.env' });
 import data from './data';
 import server from './server';
 
 
 const url = 'http://95.217.235.69/'
 
-server.post('/sendInformation', async(req, res) => {
+server.post('/sendInformation', async (req, res) => {
     try {
         let result = await axios.post(url, data);
         res.json(result.data);
     }
-    catch(error){
+    catch (error) {
         return error;
     }
 });
 
-server.get('/getKey/:email', async(req, res) => {
-    try{
+server.get('/getKey/:email', async (req, res) => {
+    try {
         let endpoint = url + req.params.email;
         let options = {
             headers: {
@@ -29,7 +29,7 @@ server.get('/getKey/:email', async(req, res) => {
         let result = await axios.get(endpoint, options);
         res.json(result.data);
     }
-    catch(error){
+    catch (error) {
         return error;
     }
 })

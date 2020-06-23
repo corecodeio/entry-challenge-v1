@@ -1,5 +1,3 @@
-
-
 const data = {
     contactInfo: {
         fullName: "Oscar Enrique Muñoz Lima",
@@ -20,7 +18,7 @@ const data = {
             },
             {
                 question:
-                "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
+                    "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
                 answer: "Respuesta: https://es.reactjs.org/docs/hooks-reference.html#useeffect",
             },
             {
