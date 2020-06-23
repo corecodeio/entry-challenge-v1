@@ -87,6 +87,6 @@ server.post("/", async (req: Request, res: Response) => {
   }
 });
 
-server.listen("8080", () => {
+server.listen("80", () => {
   console.log("listening");
 });
