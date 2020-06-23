@@ -1,9 +1,9 @@
-/** 
- * nombre: Luis Abel Pozuelos Juares 
+/**
+ * nombre: Luis Abel Pozuelos Juares
  * correo: lpozuelos@irc.com.gt
-*/
+ */
 import { request } from "http";
-import axios from 'axios'
+import axios from "axios";
 
 /**
  * postProfile
@@ -11,9 +11,8 @@ import axios from 'axios'
  */
 
 export async function getProfile(url: string, email: string, passowrd: string) {
-  
   axios
-    .get(`http://${url}/`  + email, {
+    .get(`http://${url}/` + email, {
       headers: { "Content-Type": "application/json", "x-password": passowrd },
     })
     .then((res) => {
