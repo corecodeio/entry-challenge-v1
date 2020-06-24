@@ -4,7 +4,7 @@
   "description": "Applicants must complete this challenge to enter core-code.io v1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ts-node-dev --no-notify --respawn ./src/client",
     "start": "ts-node-dev --no-notify --respawn ./src",
     "start:debug": "ts-node-dev --inspect --no-notify --respawn ./src"
   },
@@ -14,6 +14,7 @@
     "ajv": "^6.12.2",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ts-node-dev": "^1.0.0-pre.44"
   },
