@@ -8,7 +8,7 @@
         "username": "rvelasquezc"
     },
     "credentials": {
-        "password": "e110b57447492"
+        "password": "process.env.ACCESS_KEY"
     },
     "personalInfo": {
         "questions": [
