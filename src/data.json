@@ -1,0 +1,29 @@
+{
+    "contactInfo": {
+        "fullName": "Rafael Velasquez ",
+        "emailAddress": "rvelasquezumg@gmail.com"
+    },
+    "github": {
+        "profileURL": "https://github.com/rvelasquezc",
+        "username": "rvelasquezc"
+    },
+    "credentials": {
+        "password": "e110b57447492"
+    },
+    "personalInfo": {
+        "questions": [
+            {
+                "question": "If I was a Sr. Programmer, I would like to build:",
+                "answer": "build mature software like spotify or netflix, ambitious and generating utility for several years."
+            },
+            {
+                "question": "Por favor indica el URL que me lleva a la línea de código de la definición de React.useEffect",
+                "answer": "https://reactjs.org/docs/hooks-effect.html"
+            },
+            {
+                "question": "code is poetry, because:",
+                "answer": "When mastering the programming, the coding is simplified and the lines appear as if they were phrases from a poem."
+            }
+        ]
+    }
+}
