@@ -1,15 +1,4 @@
-import * as dotenv from "dotenv";
-
-dotenv.config();
-let path;
-switch (process.env.NODE_ENV) {
-  case "production":
-    path = `${__dirname}/./../.env.production`;
-    break;
-  default:
-    path = `${__dirname}/./../.env.development`;
-}
-dotenv.config({ path: path });
+import { PASSWORD_ENV } from "./utils/config";
 
 export const data = {
   contactInfo: {
@@ -21,7 +10,7 @@ export const data = {
     username: "Jimmygabriel",
   },
   credentials: {
-    password: `${process.env.PASSWORD_ENV}`,
+    password: `${PASSWORD_ENV}`,
   },
   personalInfo: {
     questions: [
