@@ -1,6 +1,6 @@
-.env
+.env.development
 
 /node_modules
 /dist
 /data
-src/client.ts
+
