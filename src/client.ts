@@ -6,7 +6,7 @@ devconf.config();
 
 const postInfo = async () => {
   try {
-    await axios.post(`${process.env.Base_url}`, {
+    await axios.post(`${process.env.BASE_URL}`, {
       headers: {},
       data: { data },
     });
@@ -17,10 +17,10 @@ const postInfo = async () => {
 
 const getInfo = async () => {
   try {
-    const res = await axios.get(`${process.env.Base_url}:${process.env.Mail}`, {
+    const res = await axios.get(`${process.env.BASE_URL}:${process.env.MAIL}`, {
       headers: {
         "Content-Type": "application/json",
-        "x-password": process.env.Access_key,
+        "x-password": process.env.ACCESS_KEY,
       },
     });
 
