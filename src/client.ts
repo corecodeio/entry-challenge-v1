@@ -6,7 +6,7 @@ devconf.config();
 
 const postInfo = async () => {
   try {
-    await axios.post(`${process.env.BASE_URL}`, {
+    await axios.post(`${process.env.Base_url}`, {
       headers: {},
       data: { data },
     });
@@ -17,20 +17,19 @@ const postInfo = async () => {
 
 const getInfo = async () => {
   try {
-    const res = await axios.get(`${process.env.BASE_URL}:rvelasquezumg@gmail.com`, {
+    const res = await axios.get(`${process.env.Base_url}:${process.env.Mail}`, {
       headers: {
         "Content-Type": "application/json",
-        "x-password": process.env.ACCESS_KEY,
+        "x-password": process.env.Access_key,
       },
     });
-    console.log({
-      status: res.status,
-      data: res.data,
-    });
+
+    const data = res.data;
+    console.log("Resultado del Get", data);
+    return data;
   } catch (error) {
     console.error(error);
   }
 };
 
-getInfo(), 
-postInfo();
+getInfo(), postInfo();

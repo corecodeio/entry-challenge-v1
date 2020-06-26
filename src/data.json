@@ -1,14 +1,14 @@
 {
     "contactInfo": {
         "fullName": "Rafael Velasquez ",
-        "emailAddress": "rvelasquezumg@gmail.com"
+        "emailAddress": "process.env.Mail"
     },
     "github": {
         "profileURL": "https://github.com/rvelasquezc",
         "username": "rvelasquezc"
     },
     "credentials": {
-        "password": "process.env.ACCESS_KEY"
+        "password": "process.env.Ac"
     },
     "personalInfo": {
         "questions": [
